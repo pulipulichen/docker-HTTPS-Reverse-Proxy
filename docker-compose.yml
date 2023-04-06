@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  nginx:
+    restart: unless-stopped
+    #image: nginx:stable-alpine3.17-slim
+    build: .
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    #- ./nginx/cache.conf:/etc/nginx/conf.d/cache.conf
+    #- ./nginx/cache:/tmp/nginx/cache
+    - ./certbot/conf:/etc/letsencrypt
+    - ./certbot/www:/var/www/certbot
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email pulipuli.chen@gmail.com -d taiwan-baseball-20230405-1831.pulipuli.info --agree-tos
