@@ -42,7 +42,8 @@ else
     #echo $CERTBOT_DOMAIN
     if [ -z "${CERTBOT_DOMAIN}" ]; then
       # 表示有註冊，但PING不到。
-
+      echo "Skip certbot."
+    else
       # 先準備好 nginx-certbot.conf
       rm -f /etc/nginx/nginx.conf
       cp /opt/rp/nginx-certbot.conf /etc/nginx/nginx.conf
