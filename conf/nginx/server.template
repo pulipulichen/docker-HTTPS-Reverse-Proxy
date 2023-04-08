@@ -112,4 +112,9 @@
         #     root /var/www/certbot;
         # }
 
+        error_page 503 /503.html;
+        location /503.html {
+            root /opt/local/html;
+        }
+
         add_header X-Cache-Status $upstream_cache_status;

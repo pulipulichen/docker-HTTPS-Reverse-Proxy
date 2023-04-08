@@ -73,6 +73,7 @@ RUN chmod +x /opt/rp/*.sh
 
 RUN mkdir -p /opt/local/html
 RUN echo 'false' > /opt/local/html/404.html
+RUN echo 'false' > /opt/local/html/503.html
 
 COPY ./build/setup.js /opt/rp/
 

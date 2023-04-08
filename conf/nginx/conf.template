@@ -33,6 +33,11 @@ http {
         location /404.html {
             root /opt/local/html;
         }
+
+        error_page 503 /503.html;
+        location /503.html {
+            root /opt/local/html;
+        }
     }
 
 ${servers}
