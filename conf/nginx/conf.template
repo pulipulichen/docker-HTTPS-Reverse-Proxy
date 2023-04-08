@@ -14,9 +14,8 @@ http {
 
     more_set_headers "Server: reverse_proxy";
     
-    pagespeed on;
-    pagespeed FileCachePath /tmp/nginx/cache/pagespeed;
-    pagespeed RewriteLevel OptimizeForBandwidth;
+    limit_conn_zone $binary_remote_addr zone=limitconnbyaddr:20m;
+    limit_conn_status 429;
 
     server {
         listen 80;

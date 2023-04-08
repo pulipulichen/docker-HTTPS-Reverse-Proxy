@@ -10,8 +10,9 @@
         client_body_timeout 5s;
         client_header_timeout 5s;
 
+        limit_conn   limitconnbyaddr  50;
+
         location / {
-            limit_conn addr 10;
             proxy_pass ${proxy_pass};
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
