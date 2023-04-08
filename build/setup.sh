@@ -88,4 +88,4 @@ cat /etc/nginx/nginx.conf
 
 #crontab /etc/cron.d/cronjob
 
-python3 /opt/rp/cron.py &
+python3 /opt/rp/cron.py
