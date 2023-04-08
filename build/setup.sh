@@ -53,10 +53,11 @@ else
 
       # 開啟 certbot
       curl http://127.0.0.1
-      
+
       RP_EMAIL=`/tmpmail --generate`
       echo $RP_EMAIL
-      /usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email $RP_EMAIL -d $CERTBOT_DOMAIN --agree-tos
+      #/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email $RP_EMAIL -d $CERTBOT_DOMAIN --agree-tos
+      sleep 300
 
       # 等待驗證成功
       service nginx stop
