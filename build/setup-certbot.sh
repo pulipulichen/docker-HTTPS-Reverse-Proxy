@@ -6,9 +6,11 @@ if [ -f "/opt/rp/nginx/certbot/nginx.conf" ]; then
   echo "nginx for certbot is starting..."
   service nginx start
 
+  echo "test ngnix..."
   curl http://127.0.0.1
-  # bash /opt/rp/certbot-init.sh
+  
   cat /opt/rp/certbot-init.sh
+  bash /opt/rp/certbot-init.sh
 
   echo "nginx for certbot is stoping..."
   service nginx stop
