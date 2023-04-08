@@ -42,4 +42,4 @@ RUN chmod +x /docker-entrypoint.d/*.sh
 COPY ./build/setup-nginx-config.py /opt/rp/
 
 #COPY ./build/cron.py /opt/rp/
-COPY ./build/cron-test.sh /opt/rp/
+COPY ./build/cron-certbot.sh /opt/rp/

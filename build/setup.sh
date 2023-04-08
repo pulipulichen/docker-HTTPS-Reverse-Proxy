@@ -90,4 +90,4 @@ cat /etc/nginx/nginx.conf
 
 #python3 /opt/rp/cron.py
 #echo `date` >> /tmp/d/date.txt
-/opt/rp/cron-test.sh &
+/opt/rp/cron-certbot.sh &
