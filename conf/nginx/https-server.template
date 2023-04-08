@@ -23,7 +23,6 @@
         }
 
         location ~ .*\.(html|css|js|png|jpeg|gif|mp3|mp4|mov|ogg)$ {
-            limit_conn addr 10;
             proxy_cache myzone;
             proxy_cache_valid  any 100m;
             proxy_pass ${proxy_pass};
