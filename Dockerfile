@@ -5,6 +5,7 @@ FROM phpdockerio/nginx-pagespeed:latest
 
 RUN apt-get update
 RUN apt-get install -y certbot iputils-ping cron
+RUN apt-get install -y curl
 
 # https://tomme.me/nginx-proxy-cache-server/
 RUN mkdir -p /tmp/nginx/cache
