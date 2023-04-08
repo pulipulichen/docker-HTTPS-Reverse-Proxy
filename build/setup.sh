@@ -63,6 +63,8 @@ else
       # 等待驗證成功
       echo "nginx close..."
       service nginx stop
+
+      /opt/rp/cron-certbot.sh &
     fi
   fi
 
@@ -90,4 +92,3 @@ cat /etc/nginx/nginx.conf
 
 #python3 /opt/rp/cron.py
 #echo `date` >> /tmp/d/date.txt
-/opt/rp/cron-certbot.sh &
