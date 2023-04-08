@@ -8,19 +8,19 @@ http {
     charset utf-8;
     server_names_hash_bucket_size  128;
 
+    more_set_headers    "Server: reverse_proxy";
+
     server {
         listen 80;
         server_name     _;
 
         location / {
-            more_set_headers    "Server: reverse_proxy";
             return 404;
         }
 
         error_page 404 /404.html;
         location /404.html {
             root /opt/local/html;
-            more_set_headers    "Server: reverse_proxy";
         }
     }
 
