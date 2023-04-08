@@ -54,7 +54,7 @@ RUN wget https://ngxpagespeed.com/install -O ngxpagespeed.sh
 RUN apt-get install -y sudo
 RUN cat ngxpagespeed.sh
 ENV DEBIAN_FRONTEND=noninteractive
-RUN bash ngxpagespeed.sh --nginx-version latest -y
+RUN bash ngxpagespeed.sh --nginx-version 1.23.4 -y
 # =================================================================
 
 # COPY ./build/setup-nginx-config.py /opt/rp/
