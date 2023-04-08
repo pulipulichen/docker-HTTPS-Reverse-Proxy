@@ -61,6 +61,7 @@
           video/mp2t
           text/csv
           application/vnd.visio
+        	application/msword
           image/webp
           font/woff2
           application/x-ttf;
