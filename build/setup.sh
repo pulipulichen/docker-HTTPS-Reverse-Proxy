@@ -7,6 +7,7 @@ if [ -z "${RP_BACKEND}" ]; then
   exit 64
 fi
 
+export CERTBOT_DOMAIN=
 if [ -z "${RP_DOMAIN_NAME}" ]; then
   echo "Environment variable \"RP_DOMAIN_NAME\" is empty. Only reverse proxy work." 1>&2
 else
@@ -60,6 +61,8 @@ else
   fi
 
 fi
+
+export CERTBOT_DOMAIN="${CERTBOT_DOMAIN}"
 
 # https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
 # if [ -z "${RP_DOMAIN_NAME}" ]; then
