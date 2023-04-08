@@ -3,7 +3,7 @@
 #while :
 #do
   #sleep 2592000
-  sleep 30
+  sleep 10
 
   # 先把nginx環境準備好
   cp -f /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
