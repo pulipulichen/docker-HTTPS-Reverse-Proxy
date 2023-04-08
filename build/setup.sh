@@ -87,3 +87,5 @@ cat /etc/nginx/nginx.conf
 # okkk
 
 #crontab /etc/cron.d/cronjob
+
+python3 /opt/rp/cron.py &

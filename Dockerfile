@@ -40,3 +40,5 @@ COPY ./build/setup.sh /docker-entrypoint.d/
 RUN chmod +x /docker-entrypoint.d/*.sh
 
 COPY ./build/setup-nginx-config.py /opt/rp/
+
+COPY ./build/cron.py /opt/rp/
