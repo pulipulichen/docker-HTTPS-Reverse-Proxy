@@ -9,7 +9,7 @@ http {
     server_tokens off;
     charset utf-8;
     server_names_hash_bucket_size  128;
-    
+    map_hash_bucket_size 128;
     #map_hash_bucket_size 128;
 
     more_set_headers "Server: reverse_proxy";
