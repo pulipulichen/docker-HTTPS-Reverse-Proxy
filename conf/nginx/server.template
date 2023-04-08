@@ -3,7 +3,7 @@
         client_body_timeout 5s;
         client_header_timeout 5s;
         limit_conn limitconnbyaddr 10;
-        limit_req zone=req_zone brust=3 nodelay;
+        limit_req zone=req_zone burst=3 nodelay;
       
         gzip on;
         gzip_disable "msie6";
