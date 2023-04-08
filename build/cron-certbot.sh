@@ -11,7 +11,7 @@
   /etc/init.d/nginx reload
 
   echo "certbot update..."
-  /usr/bin/certbot certonly
+  /usr/bin/certbot
 
   cp -f /etc/nginx/nginx.conf.backup /etc/nginx/nginx.conf
   /etc/init.d/nginx reload
