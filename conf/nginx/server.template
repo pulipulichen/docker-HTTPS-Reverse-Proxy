@@ -5,6 +5,7 @@
         limit_conn   limitconnbyaddr  50;
         #test_types_hash_bucket_size 64;
         #test_types_hash_bucket_size 64;
+        types_hash_bucket_size 64;
 
         gzip on;
         gzip_disable "msie6";
