@@ -3,7 +3,7 @@
         client_body_timeout 5s;
         client_header_timeout 5s;
         limit_conn   limitconnbyaddr  50;
-
+        test_types_hash_bucket_size 128;
 
         gzip on;
         gzip_disable "msie6";
