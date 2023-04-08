@@ -22,6 +22,10 @@ else {
     let server_name = backendPair.slice(0, pos)
     let proxy_pass = backendPair.slice(pos + 1)
 
+    if (proxy_pass.endsWith('/')) {
+      proxy_pass = proxy_pass.slice(0, -1)
+    }
+
     rpBackendMap.push({
       server_name,
       proxy_pass
