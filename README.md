@@ -4,6 +4,8 @@ Nginx Reverse Proxy with HTTPS via LetsEncrypt and update certification regularl
 ## Features
 
 - Reverse proxy: Setup a frontend before your real server.
+- Proxy cache: 
+
 
 
 ## How to Use

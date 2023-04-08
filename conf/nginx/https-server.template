@@ -17,7 +17,7 @@
             #more_set_headers    "Server: reverse_proxy";
         }
 
-        location ~ .*\.(html|css|js|png|jpeg)$ {
+        location ~ .*\.(html|css|js|png|jpeg|gif|mp3|mp4|mov|ogg)$ {
             proxy_cache myzone;
             proxy_cache_valid  any 100m;
             proxy_pass ${proxy_pass};
