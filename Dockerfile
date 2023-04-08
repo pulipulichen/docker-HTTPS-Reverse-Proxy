@@ -21,6 +21,8 @@ RUN curl -L "https://git.io/tmpmail" > tmpmail && chmod +x tmpmail
 RUN mkdir -p /opt/rp/
 COPY ./build/nginx-certbot.conf /opt/rp/nginx-certbot.conf
 
+RUN apt-get install dnsutils -y
+
 # RUN mkdir -p /opt/rp
 COPY ./build/setup.sh /docker-entrypoint.d/
 RUN chmod +x /docker-entrypoint.d/*.sh
