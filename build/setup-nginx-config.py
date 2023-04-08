@@ -9,11 +9,11 @@ RP_BACKEND = os.environ.get('RP_BACKEND')
 # ===========
 
 try:
-  RP_DOMAIN_NAME = os.environ.get('RP_DOMAIN_NAME')
+  RP_DOMAIN_NAME = os.environ.get('CERTBOT_DOMAIN')
   #print('ENV environment variable exists')
   # print('okkkkk nooooo', RP_DOMAIN_NAME)
   if RP_DOMAIN_NAME == None:
-    raise Exception("RP_DOMAIN_NAME is not set")
+    raise Exception("CERTBOT_DOMAIN is not set")
   
   # sed -e 's/${RP_DOMAIN}/$CERTBOT_DOMAIN/g' -e 's/${RP_BACKEND}/$RP_BACKEND/g' /etc/nginx/nginx-https-template.conf  >> /etc/nginx/nginx.conf
 
