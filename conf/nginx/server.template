@@ -57,10 +57,12 @@
           font/opentype
           application/vnd.ms-fontobject
           font/x-woff
+          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
           application/vnd.ms-excel
           video/mp2t
           text/csv
           application/vnd.visio
+          application/vnd.openxmlformats-officedocument.wordprocessingml.document
         	application/msword
           image/webp
           font/woff2
