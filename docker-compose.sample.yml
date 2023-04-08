@@ -3,6 +3,7 @@ services:
   rp:
     environment:
     - RP_BACKEND=http://blog.pulipuli.info
+    #- RP_DOMAIN_NAME=rp.pulipuli.info
     ports:
     #- 80:80
     #- 443:443

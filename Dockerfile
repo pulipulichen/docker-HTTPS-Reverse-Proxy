@@ -11,9 +11,6 @@ COPY ./build/cronjob /etc/cron.d/
 # https://tomme.me/nginx-proxy-cache-server/
 RUN mkdir -p /tmp/nginx/cache
 
-# 
-# RUN mkdir -p /opt/rp
-COPY ./build/setup.sh /docker-entrypoint.d/
 # RUN chmod +x /opt/rp/docker-entrypoint.sh
 # ENTRYPOINT ["/opt/rp/docker-entrypoint.sh"]
 #ENTRYPOINT ["/docker-entrypoint-rp.sh"]
@@ -23,3 +20,9 @@ RUN curl -L "https://git.io/tmpmail" > tmpmail && chmod +x tmpmail
 
 RUN mkdir -p /opt/rp/
 COPY ./build/nginx-certbot.conf /opt/rp/nginx-certbot.conf
+
+# RUN mkdir -p /opt/rp
+COPY ./build/setup.sh /docker-entrypoint.d/
+RUN chmod +x /docker-entrypoint.d/*.sh
+
+COPY ./build/setup-nginx-config.py /opt/rp/

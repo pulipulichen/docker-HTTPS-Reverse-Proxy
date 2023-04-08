@@ -1,6 +1,6 @@
 {
   "scripts": {
     "start": "docker-compose up --build",
-    "bash": "docker-compose run proxy bash"
+    "bash": "docker-compose run rp bash"
   }
 }
