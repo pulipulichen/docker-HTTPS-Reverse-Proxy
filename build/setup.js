@@ -53,25 +53,36 @@ for (let i = 0; i < rpBackendMap.length; i++) {
     execSync(`nslookup ${server_name}`)
 
     // 有註冊
+    let pingResult = execSync(`ping -c 1 -t 10 ${server_name}`)
+    pingResult = pingResult.toString()
 
-    // ===========
-    // 檢查看看有沒有被佔用
-    try {
-      execSync(`curl --connect-timeout 5 http://${server_name}`)
-      console.log(`${server_name} is running. Stop it before you want to running reverse proxy.`)
+    if (pingResult.indexOf('1 received') > -1) {
+      console.log(`${server_name}'s server is online.`)
 
-      // 有被佔用
+      // ===========
+      // 檢查看看有沒有被佔用
+      try {
+        execSync(`curl --connect-timeout 5 http://${server_name}`)
+        console.log(`${server_name} is running. Stop it before you want to running reverse proxy.`)
+
+        // 有被佔用
+        rpBackendMap[i].enable_https = false
+        continue
+      }
+      catch (e) {
+        // 沒有被佔用
+        console.log(`${server_name} is ready for certbot.`)
+
+        rpBackendMap[i].enable_https = true
+        continue
+      }
+    }
+    else {
+      console.log(`${server_name}'s server is offline.`)
+
       rpBackendMap[i].enable_https = false
       continue
     }
-    catch (e) {
-      // 沒有被佔用
-      console.log(`${server_name} is ready for certbot.`)
-
-      rpBackendMap[i].enable_https = true
-      continue
-    }
-
   }
   catch (e) {
     // 沒有註冊
