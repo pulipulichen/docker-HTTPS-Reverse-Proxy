@@ -1,6 +1,6 @@
 # https://hub.docker.com/layers/library/nginx/1.23.4-bullseye-perl/images/sha256-85d0eaac3c90ccb73feb2aceb636f22080e9dfcdd2c8e04b91716bd4241ec6e0?context=explore
-#FROM nginx:1.23.4-bullseye-perl
-FROM anroe/nginx-headers-more:1.22.1-headers-more-v0.34
+FROM nginx:1.23.4-bullseye-perl
+#FROM anroe/nginx-headers-more:1.22.1-headers-more-v0.34
 
 RUN apt-get update
 RUN apt-get install -y certbot iputils-ping cron
@@ -41,6 +41,7 @@ RUN mkdir -p /etc/nginx/html/
 RUN echo "certbot" > /etc/nginx/html/index.html
 
 #RUN apt-get install -y libnginx-mod-http-headers-more-filter
+RUN apt-get install -y nginx-extras
 
 # COPY ./build/setup-nginx-config.py /opt/rp/
 
