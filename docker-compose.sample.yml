@@ -18,6 +18,7 @@ services:
     - ./conf/nginx/http-server.template:/opt/rp/nginx/rp/http-server.template
     - ./conf/nginx/https-server.template:/opt/rp/nginx/rp/https-server.template
     - ./conf/nginx/conf.template:/opt/rp/nginx/rp/conf.template
+    - ./conf/nginx/server.template:/opt/rp/nginx/rp/server.template
     - ./cache:/tmp/nginx/cache
     - ./conf/certbot/conf:/etc/letsencrypt
     - ./conf/certbot/www:/var/www/certbot
