@@ -11,7 +11,7 @@ export CERTBOT_DOMAIN=
 if [ -z "${RP_DOMAIN_NAME}" ]; then
   echo "Environment variable \"RP_DOMAIN_NAME\" is empty. Only reverse proxy work." 1>&2
 else
-  CERTBOT_DIR=/var/www/certbot/$RP_DOMAIN_NAME
+  CERTBOT_DIR=/etc/letsencrypt/live/$RP_DOMAIN_NAME
   if [ -d "$CERTBOT_DIR" ]; then
     echo "Certbot is initialized."
   else
