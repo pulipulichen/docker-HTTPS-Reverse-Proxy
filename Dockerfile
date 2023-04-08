@@ -49,7 +49,7 @@ RUN apt-get install -y nginx-extras
 # =================================================================
 # 安裝PageSpeed模組
 # RUN apt install curl dpkg-dev build-essential zlib1g-dev git libpcre3 git libpcre3-dev unzip uuid-dev -y
-RUN bash <(curl -f -L -sS https://ngxpagespeed.com/install) --nginx-version latest
+RUN curl -f -L -sS https://ngxpagespeed.com/install | bash - --nginx-version latest
 # =================================================================
 
 # COPY ./build/setup-nginx-config.py /opt/rp/
