@@ -7,3 +7,5 @@ from crontab import CronTab
 mem_cron = CronTab(tab="""
   * * * * * echo `date` >> /tmp/d/date.txt
 """)
+
+print('cron is setted.')
