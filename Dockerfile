@@ -2,10 +2,10 @@
 FROM nginx:1.23.4-bullseye-perl
 
 RUN apt-get update
-RUN apt-get install -y certbot
+RUN apt-get install -y certbot iputils-ping cron
 
 # https://ithelp.ithome.com.tw/articles/10293218
-RUN apt-get install -y cron
+#RUN apt-get install -y cron
 COPY ./build/cronjob /etc/cron.d/
 
 # https://tomme.me/nginx-proxy-cache-server/
