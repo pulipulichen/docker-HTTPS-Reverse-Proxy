@@ -2,7 +2,7 @@ version: '3.7'
 services:
   rp:
     environment:
-    - RP_BACKEND=http://blog.pulipuli.info
+    - RP_BACKEND=http://example.com
     #- RP_DOMAIN_NAME=rp.pulipuli.info
     ports:
     - 80:80

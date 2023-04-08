@@ -2,13 +2,13 @@ version: '3.7'
 services:
   rp:
     environment:
-    - RP_BACKEND=http://blog.pulipuli.info
+    - RP_BACKEND=http://example.com
     #- RP_DOMAIN_NAME=rp.pulipuli.info
     ports:
-    - 80:80
-    - 443:443
-    # - 8080:80
-    # - 8443:443
+    # - 80:80
+    # - 443:443
+    - 8080:80
+    - 8443:443
     restart: unless-stopped
     build: .
     volumes:
