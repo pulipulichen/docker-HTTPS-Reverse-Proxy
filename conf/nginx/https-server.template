@@ -3,40 +3,9 @@
         # use the certificates
         ssl_certificate     /etc/letsencrypt/live/${server_name}/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/${server_name}/privkey.pem;
-        server_name ${server_name};
+        
         root /var/www/html;
         index index.php index.html index.htm;
 
-        client_body_timeout 5s;
-        client_header_timeout 5s;
-
-        limit_conn   limitconnbyaddr  50;
-
-        location / {
-            proxy_pass ${proxy_pass};
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_hide_header X-Powered-By;
-            proxy_hide_header Server;
-            #more_set_headers    "Server: reverse_proxy";
-        }
-
-        location ~ .*\.(html|css|js|png|jpeg|gif|mp3|mp4|mov|ogg)$ {
-            proxy_cache myzone;
-            proxy_cache_valid  any 100m;
-            proxy_pass ${proxy_pass};
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_hide_header X-Powered-By;
-            proxy_hide_header Server;
-            #more_set_headers    "Server: reverse_proxy";
-        }
-
-        # location ~ /.well-known/acme-challenge/ {
-        #     root /var/www/certbot;
-        # }
-
-        add_header X-Cache-Status $upstream_cache_status;
+        ${server}
     }

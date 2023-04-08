@@ -188,6 +188,7 @@ else {
 
 // ==============================
 
+let serverTemplate = fs.readFileSync(`/opt/rp/nginx/rp/server.template`, 'utf-8')
 let confTemplate = fs.readFileSync(`/opt/rp/nginx/rp/conf.template`, 'utf-8')
 let httpServerTemplate = fs.readFileSync(`/opt/rp/nginx/rp/http-server.template`, 'utf-8')
 let httpsServerTemplate = fs.readFileSync(`/opt/rp/nginx/rp/https-server.template`, 'utf-8')
@@ -196,15 +197,14 @@ let servers = []
 for (let i = 0; i < rpBackendMap.length; i++) {
   let {server_name, proxy_pass, enable_https} = rpBackendMap[i]
 
-  let httpServer = httpServerTemplate.replace(/\$\{server_name\}/g, server_name)
-  httpServer = httpServer.replace(/\$\{proxy_pass\}/g, proxy_pass)
+  let server = serverTemplate.replace(/\$\{server_name\}/g, server_name)
+  server = server.replace(/\$\{proxy_pass\}/g, proxy_pass)
 
+  let httpServer = httpServerTemplate.replace(/\$\{server\}/g, server)
   servers.push(httpServer)
 
   if (enable_https) {
-    let httpsServer = httpsServerTemplate.replace(/\$\{server_name\}/g, server_name)
-    httpsServer = httpsServer.replace(/\$\{proxy_pass\}/g, proxy_pass)
-
+    let httpsServer = httpsServerTemplate.replace(/\$\{server\}/g, server)
     servers.push(httpsServer)
   }
 }
