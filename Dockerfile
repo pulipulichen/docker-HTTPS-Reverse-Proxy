@@ -1,7 +1,7 @@
 # https://hub.docker.com/layers/library/nginx/1.23.4-bullseye-perl/images/sha256-85d0eaac3c90ccb73feb2aceb636f22080e9dfcdd2c8e04b91716bd4241ec6e0?context=explore
 # FROM nginx:1.23.4-bullseye-perl
 #FROM anroe/nginx-headers-more:1.22.1-headers-more-v0.34
-FROM rootooz/nginx-pagespeed:1.22.0
+FROM yudikeren/nginx-cdn
 
 RUN apt-get update
 RUN apt-get install -y certbot iputils-ping cron
@@ -48,7 +48,7 @@ RUN echo "certbot" > /etc/nginx/html/index.html
 
 # =================================================================
 # 安裝PageSpeed模組
-RUN apt install curl dpkg-dev build-essential zlib1g-dev git libpcre3 git libpcre3-dev unzip uuid-dev -y
+# RUN apt install curl dpkg-dev build-essential zlib1g-dev git libpcre3 git libpcre3-dev unzip uuid-dev -y
 
 # =================================================================
 
