@@ -24,6 +24,7 @@ COPY ./build/nginx-certbot.conf /opt/rp/nginx-certbot.conf
 RUN apt-get install dnsutils -y
 RUN apt-get install jq w3m xclip -y
 
+RUN mkdir -p /etc/nginx/html/
 RUN echo "certbot" > /etc/nginx/html/index.html
 
 # RUN mkdir -p /opt/rp
