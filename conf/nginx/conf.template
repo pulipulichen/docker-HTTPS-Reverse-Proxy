@@ -9,8 +9,7 @@ http {
     server_tokens off;
     charset utf-8;
     server_names_hash_bucket_size  128;
-    test_types_hash_bucket_size 64;
-
+    
     more_set_headers "Server: reverse_proxy";
     
     limit_conn_zone $binary_remote_addr zone=limitconnbyaddr:20m;
