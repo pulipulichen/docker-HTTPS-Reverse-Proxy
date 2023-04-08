@@ -39,16 +39,12 @@ RUN npm -v
 RUN mkdir -p /etc/nginx/html/
 RUN echo "certbot" > /etc/nginx/html/index.html
 
-# RUN mkdir -p /opt/rp
-COPY ./build/setup.sh /docker-entrypoint.d/
-RUN chmod +x /docker-entrypoint.d/*.sh
-
 # COPY ./build/setup-nginx-config.py /opt/rp/
 
 #COPY ./build/cron.py /opt/rp/
 COPY ./build/cron-certbot.sh /opt/rp/
 
-# RUN mkdir -p /opt/rp/nginx/certbot
+RUN mkdir -p /opt/rp/nginx/certbot
 COPY ./build/nginx-certbot.conf /opt/rp/
 # COPY ./build/nginx/certbot/http-server.template /opt/rp/nginx/certbot
 # COPY ./build/nginx/certbot/http-server.template /opt/rp/nginx/certbot
@@ -59,3 +55,6 @@ RUN chmod +x /opt/rp/*.sh
 
 COPY ./build/setup.js /opt/rp/
 
+# RUN mkdir -p /opt/rp
+COPY ./build/setup.sh /docker-entrypoint.d/
+RUN chmod +x /docker-entrypoint.d/*.sh
