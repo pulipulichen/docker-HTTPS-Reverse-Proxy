@@ -5,5 +5,5 @@
   #sleep 2592000
   sleep 30
   echo "certbot update..."
-  /bin/certbot
+  /usr/bin/certbot
 #done
