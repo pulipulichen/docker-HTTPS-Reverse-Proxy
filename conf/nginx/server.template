@@ -5,7 +5,7 @@
         limit_conn   limitconnbyaddr  50;
         #test_types_hash_bucket_size 64;
         #test_types_hash_bucket_size 64;
-        types_hash_bucket_size 128;
+        #types_hash_bucket_size 128;
 
         gzip on;
         gzip_disable "msie6";
@@ -41,18 +41,13 @@
           image/png
           image/gif
           audio/mid
-          application/vnd.oasis.opendocument.text
           application/pdf
         	video/x-flv
-          application/vnd.oasis.opendocument.spreadsheet
           image/vnd.microsoft.icon
           application/x-httpd-php
           application/x-tar
-          application/vnd.oasis.opendocument.presentation
           application/x-sh
           application/rtf
-          application/vnd.openxmlformats-officedocument.presentationml.presentation
-          application/vnd.ms-powerpoint
           text/css
           text/javascript
           text/plain
@@ -62,14 +57,10 @@
           font/opentype
           application/vnd.ms-fontobject
           font/x-woff
-          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
           application/vnd.ms-excel
           video/mp2t
           text/csv
           application/vnd.visio
-          application/vnd.openxmlformats-officedocument.wordprocessingml.document
-        	application/msword
-          image/webp
           font/woff2
           application/x-ttf;
 
