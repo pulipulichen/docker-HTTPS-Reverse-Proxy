@@ -2,6 +2,8 @@ version: '3.7'
 services:
   rp:
     environment:
+    # Example
+    #- RP_BACKEND=test-a.pulipuli.info,http://example.com|test-b.pulipuli.info,http://www.helloworld.org
     - RP_BACKEND=test-a.pulipuli.info,http://example.com|test-b.pulipuli.info,http://www.helloworld.org
     #- RP_DOMAIN_NAME=rp.pulipuli.info
     ports:
