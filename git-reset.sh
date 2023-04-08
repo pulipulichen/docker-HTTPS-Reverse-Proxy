@@ -4,4 +4,4 @@
 git pull
 chmod +x *.sh
 
-startup.sh
+./startup.sh
