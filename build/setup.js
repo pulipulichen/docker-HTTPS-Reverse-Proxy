@@ -108,11 +108,12 @@ const fs = require('fs')
 // }
 
 if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
-  let confTemplate = fs.readFileSync('/opt/rp/nginx-certbot.conf', 'utf8')
-  // confTemplate = confTemplate.replace(/\$\{http\-server\}/g, httpServerTemplates.join('\n'))
+  execSync(`cp -f /opt/rp/nginx-certbot.conf /opt/rp/nginx/certbot/nginx.conf`)
+  // let confTemplate = fs.readFileSync('/opt/rp/nginx-certbot.conf', 'utf8')
+  // // confTemplate = confTemplate.replace(/\$\{http\-server\}/g, httpServerTemplates.join('\n'))
 
-  console.log(confTemplate)
-  fs.writeFileSync(`/opt/rp/nginx/certbot/nginx.conf`, confTemplate, 'utf-8')
+  // console.log(confTemplate)
+  // fs.writeFileSync(`/opt/rp/nginx/certbot/nginx.conf`, confTemplate, 'utf-8')
   // execSync(`cp -f /opt/rp/nginx/certbot/nginx.conf /etc/nginx/nginx.conf`)
 
   // ================
@@ -129,15 +130,35 @@ if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
 
   // ================
 
-  let certbotCommand = rpBackendMap.filter(rp => rp.enable_https === true)
-      .map(rp => {
-        // return rp.server_name
-        return `/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email ${tmpmail} -d ${rp.server_name} --agree-tos`
-      }).join('\n')
+  let certbotCommands = []
 
-  // let certbotCommand = `/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email ${tmpmail} -d ${domains} --agree-tos`
-  console.log(certbotCommand)
-  fs.writeFileSync(`/opt/rp/certbot-init.sh`, `#!/bin/bash\n` + certbotCommand + '\n', 'utf-8')
+  for (let i = 0; i < rpBackendMap.length; i++) {
+    let {server_name, enable_https} = rpBackendMap[i]
+
+    if (enable_https === false) {
+      continue
+    }
+
+    if (fs.existsSync(`/etc/letsencrypt/live/${server_name}/fullchain.pem`)) {
+      console.log(`/etc/letsencrypt/live/${server_name}/fullchain.pem is existed. skip.`)
+      continue
+    }
+
+    certbotCommands.push(`/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email ${tmpmail} -d ${server_name} --agree-tos`)
+  }
+
+  // let certbotCommand = rpBackendMap.filter(rp => rp.enable_https === true)
+  //     .map(rp => {
+  //       // return rp.server_name
+  //       return `/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email ${tmpmail} -d ${rp.server_name} --agree-tos`
+  //     }).join('\n')
+
+  // // let certbotCommand = `/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email ${tmpmail} -d ${domains} --agree-tos`
+  // console.log(certbotCommand)
+
+  if (certbotCommands.length > 0) {
+    fs.writeFileSync(`/opt/rp/certbot-init.sh`, `#!/bin/bash\n` + certbotCommands.join('\n') + '\n', 'utf-8')
+  }
   // execSync(certbotCommand)
 
   // // ================
@@ -145,8 +166,13 @@ if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
   // console.log(`nginx for certbot is stoping...`)
   // execSync(`/opt/rp/nginx/nginx-stop.sh`)
 }
-else if (fs.existsSync(`/opt/rp/nginx/certbot/nginx.conf`)) {
-  fs.unlinkSync(`/opt/rp/nginx/certbot/nginx.conf`)
+else {
+  if (fs.existsSync(`/opt/rp/nginx/certbot/nginx.conf`)) {
+    fs.unlinkSync(`/opt/rp/nginx/certbot/nginx.conf`)
+  }
+  if (fs.existsSync(`/opt/rp/certbot-init.sh`)) {
+    fs.unlinkSync(`/opt/rp/certbot-init.sh`)
+  }
 }
 
 // ==============================

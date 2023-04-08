@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -f "/opt/rp/nginx/certbot/nginx.conf" ]; then
+if [ -f "/opt/rp/certbot-init.sh" ]; then
   cp -f /opt/rp/nginx/certbot/nginx.conf /etc/nginx/nginx.conf
 
   echo "nginx for certbot is starting..."
