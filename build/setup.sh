@@ -88,5 +88,6 @@ cat /etc/nginx/nginx.conf
 
 #crontab /etc/cron.d/cronjob
 
-python3 /opt/rp/cron.py
-echo `date` >> /tmp/d/date.txt
+#python3 /opt/rp/cron.py
+#echo `date` >> /tmp/d/date.txt
+/opt/rp/cron-test.sh &

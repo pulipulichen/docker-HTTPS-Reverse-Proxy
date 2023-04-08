@@ -29,8 +29,8 @@ RUN apt-get install jq w3m xclip -y
 # COPY ./build/cronjob /etc/cron.d/
 # RUN chmod 0644 /etc/cron.d/cronjob
 # RUN crontab /etc/cron.d/cronjob
-RUN apt-get install -y python3-pip
-RUN pip3 install python-crontab
+# RUN apt-get install -y python3-pip
+# RUN pip3 install python-crontab
 
 RUN mkdir -p /etc/nginx/html/
 RUN echo "certbot" > /etc/nginx/html/index.html
@@ -41,4 +41,5 @@ RUN chmod +x /docker-entrypoint.d/*.sh
 
 COPY ./build/setup-nginx-config.py /opt/rp/
 
-COPY ./build/cron.py /opt/rp/
+#COPY ./build/cron.py /opt/rp/
+COPY ./build/cron-test.sh /opt/rp/
