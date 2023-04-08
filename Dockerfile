@@ -32,6 +32,10 @@ RUN apt-get install jq w3m xclip -y
 # RUN apt-get install -y python3-pip
 # RUN pip3 install python-crontab
 
+RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash -
+RUN apt-get update && apt-get install -y yarn nodejs
+RUN npm -v
+
 RUN mkdir -p /etc/nginx/html/
 RUN echo "certbot" > /etc/nginx/html/index.html
 
@@ -39,7 +43,18 @@ RUN echo "certbot" > /etc/nginx/html/index.html
 COPY ./build/setup.sh /docker-entrypoint.d/
 RUN chmod +x /docker-entrypoint.d/*.sh
 
-COPY ./build/setup-nginx-config.py /opt/rp/
+# COPY ./build/setup-nginx-config.py /opt/rp/
 
 #COPY ./build/cron.py /opt/rp/
 COPY ./build/cron-certbot.sh /opt/rp/
+
+RUN mkdir -p /opt/rp/nginx/certbot
+COPY ./build/nginx-certbot.conf /opt/rp/
+# COPY ./build/nginx/certbot/http-server.template /opt/rp/nginx/certbot
+# COPY ./build/nginx/certbot/http-server.template /opt/rp/nginx/certbot
+# COPY ./build/nginx/nginx-start.sh /opt/rp/nginx/
+# COPY ./build/nginx/nginx-stop.sh /opt/rp/nginx/
+COPY ./build/setup-certbot.sh /opt/rp/
+
+COPY ./build/setup.js /opt/rp/
+

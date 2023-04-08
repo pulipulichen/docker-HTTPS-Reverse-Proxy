@@ -1,0 +1,21 @@
+    server {
+        listen 80;
+
+        server_name ${server_name};
+
+        location / {
+            proxy_pass ${proxy_pass};
+        }
+
+        location ~ .*\.(html|css|js|png|jpeg)$ {
+           proxy_cache myzone;
+           proxy_cache_valid  any 100m;
+           proxy_pass ${proxy_pass};
+        }
+
+        # location ~ /.well-known/acme-challenge/ {
+        #     root /var/www/certbot;
+        # }
+
+        add_header X-Cache-Status $upstream_cache_status;
+    }
