@@ -28,6 +28,7 @@ RUN apt-get install jq w3m xclip -y
 #RUN apt-get install -y cron
 COPY ./build/cronjob /etc/cron.d/
 RUN chmod 0644 /etc/cron.d/cronjob
+RUN crontab /etc/cron.d/cronjob
 
 RUN mkdir -p /etc/nginx/html/
 RUN echo "certbot" > /etc/nginx/html/index.html

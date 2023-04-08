@@ -86,4 +86,4 @@ cat /etc/nginx/nginx.conf
 #/docker-entrypoint.sh
 # okkk
 
-crontab /etc/cron.d/cronjob
+#crontab /etc/cron.d/cronjob
