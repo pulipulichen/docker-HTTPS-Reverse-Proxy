@@ -1,3 +1,4 @@
+# https://hub.docker.com/layers/library/nginx/1.23.4-bullseye-perl/images/sha256-85d0eaac3c90ccb73feb2aceb636f22080e9dfcdd2c8e04b91716bd4241ec6e0?context=explore
 FROM nginx:1.23.4-bullseye-perl
 
 RUN apt-get update
@@ -7,5 +8,18 @@ RUN apt-get install -y certbot
 RUN apt-get install -y cron
 COPY ./build/cronjob /etc/cron.d/
 
-COPY ./build/docker-entrypoint.sh /opt/rp/docker-entrypoint.sh
-ENTRYPOINT ["/opt/rp/docker-entrypoint.sh"]
+# https://tomme.me/nginx-proxy-cache-server/
+RUN mkdir -p /tmp/nginx/cache
+
+# 
+# RUN mkdir -p /opt/rp
+COPY ./build/setup.sh /docker-entrypoint.d/
+# RUN chmod +x /opt/rp/docker-entrypoint.sh
+# ENTRYPOINT ["/opt/rp/docker-entrypoint.sh"]
+#ENTRYPOINT ["/docker-entrypoint-rp.sh"]
+
+# https://www.makeuseof.com/generate-temporary-email-addresses-using-linux-command-line/
+RUN curl -L "https://git.io/tmpmail" > tmpmail && chmod +x tmpmail
+
+RUN mkdir -p /opt/rp/
+COPY ./build/nginx-certbot.conf /opt/rp/nginx-certbot.conf

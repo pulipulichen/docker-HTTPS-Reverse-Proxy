@@ -63,10 +63,11 @@ fi
 
 # https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
 if [ -z "${RP_DOMAIN_NAME}" ]; then
-  sed 's/${RP_BACKEND}/$RP_BACKEND/g' /etc/nginx/nginx-http-template.conf  >> /etc/nginx/nginx.conf
-
+  sed 's/${RP_BACKEND}/$RP_BACKEND/g' /etc/nginx/nginx-http-template.conf  >> /etc/nginx/nginx.conf  
 else
   sed -e 's/${RP_DOMAIN}/$CERTBOT_DOMAIN/g' -e 's/${RP_BACKEND}/$RP_BACKEND/g' /etc/nginx/nginx-https-template.conf  >> /etc/nginx/nginx.conf
 fi
+
+echo /etc/nginx/nginx.conf
 
 /docker-entrypoint.sh
