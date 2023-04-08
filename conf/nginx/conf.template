@@ -15,6 +15,11 @@ http {
         location / {
             return 404;
         }
+
+        error_page 404 /404.html;
+        location /404.html {
+            root /opt/local/html;
+        }
     }
 
 ${servers}

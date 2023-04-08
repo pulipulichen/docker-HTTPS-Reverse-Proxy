@@ -53,6 +53,9 @@ COPY ./build/nginx-certbot.conf /opt/rp/
 COPY ./build/setup-certbot.sh /opt/rp/
 RUN chmod +x /opt/rp/*.sh
 
+RUN mkdir -p /opt/local/html
+RUN echo 'false' > /opt/local/html/404.html
+
 COPY ./build/setup.js /opt/rp/
 
 # RUN mkdir -p /opt/rp
