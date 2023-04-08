@@ -51,6 +51,7 @@ RUN apt-get install -y nginx-extras
 # RUN apt install curl dpkg-dev build-essential zlib1g-dev git libpcre3 git libpcre3-dev unzip uuid-dev -y
 RUN apt-get install -y wget nano
 RUN wget https://ngxpagespeed.com/install -o ngxpagespeed.sh
+RUN cat ngxpagespeed.sh
 RUN bash ngxpagespeed.sh --nginx-version latest
 # =================================================================
 
