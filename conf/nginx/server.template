@@ -4,8 +4,38 @@
         client_header_timeout 5s;
         limit_conn   limitconnbyaddr  50;
 
+
+        gzip on;
+        gzip_disable "msie6";
+
+        gzip_vary on;
+        gzip_proxied any;
+        gzip_comp_level 6;
+        gzip_buffers 16 8k;
+        gzip_http_version 1.1;
+        gzip_min_length 256;
+        gzip_types
+          application/atom+xml
+          application/geo+json
+          application/javascript
+          application/x-javascript
+          application/json
+          application/ld+json
+          application/manifest+json
+          application/rdf+xml
+          application/rss+xml
+          application/xhtml+xml
+          application/xml
+          font/eot
+          font/otf
+          font/ttf
+          image/svg+xml
+          text/css
+          text/javascript
+          text/plain
+          text/xml;
+
         location / {
-            gzip on;
             proxy_pass ${proxy_pass};
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
@@ -16,7 +46,7 @@
         }
 
         location ~ .*\.(html|css|js|png|jpeg|gif|mp3|mp4|mov|ogg)$ {
-            gzip on;
+            #gzip on;
             proxy_cache myzone;
             proxy_cache_valid  any 100m;
             proxy_pass ${proxy_pass};
