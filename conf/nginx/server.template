@@ -33,7 +33,6 @@
           font/otf
           font/ttf
           image/svg+xml
-          image/svg+xml/javascript
           image/bmp
           image/jpeg
           image/x-png
@@ -45,10 +44,7 @@
           application/pdf
         	video/x-flv
           application/vnd.oasis.opendocument.spreadsheet
-        	application/epub+zip
           image/vnd.microsoft.icon
-        	text/calendar
-          video/quicktime
           application/x-httpd-php
           application/x-tar
           application/vnd.oasis.opendocument.presentation
