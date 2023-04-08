@@ -1,2 +1,2 @@
 #0 0 1 * * echo "Update certification..."; /bin/certbot
-38 * *  * * echo "Update certification..."; /bin/certbot
+*/5 * *  * * echo "Update certification..."; /bin/certbot

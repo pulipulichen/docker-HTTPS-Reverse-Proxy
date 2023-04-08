@@ -7,6 +7,7 @@ RUN apt-get install -y certbot iputils-ping cron
 # https://ithelp.ithome.com.tw/articles/10293218
 #RUN apt-get install -y cron
 COPY ./build/cronjob /etc/cron.d/
+RUN chmod 0644 /etc/cron.d/cronjob && crontab /etc/cron.d/cronjob
 
 # https://tomme.me/nginx-proxy-cache-server/
 RUN mkdir -p /tmp/nginx/cache
