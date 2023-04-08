@@ -2,7 +2,7 @@
 
         client_body_timeout 5s;
         client_header_timeout 5s;
-        limit_conn   limitconnbyaddr  50;
+        limit_conn   limitconnbyaddr  3;
       
 
         gzip on;
