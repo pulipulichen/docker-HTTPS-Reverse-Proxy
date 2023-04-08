@@ -1,2 +1,2 @@
-0 0 1 * * echo "Update certification..."; /bin/certbot
-* * * * * echo `date` >> /tmp/date.txt
+0 0 1 * * root echo "Update certification..."; /bin/certbot
+* * * * * root echo `date` >> /tmp/date.txt
