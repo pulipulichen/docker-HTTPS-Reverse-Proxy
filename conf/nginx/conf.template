@@ -8,6 +8,15 @@ http {
     charset utf-8;
     server_names_hash_bucket_size  128;
 
+    server {
+        listen 80;
+        server_name     _;
+
+        location / {
+            return 404;
+        }
+    }
+
 ${servers}
 
     proxy_cache_path /tmp/nginx/cache levels=1:2 keys_zone=myzone:10m inactive=1d max_size=10g;
