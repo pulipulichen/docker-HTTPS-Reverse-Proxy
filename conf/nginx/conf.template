@@ -13,14 +13,17 @@ http {
     
     more_set_headers "Server: reverse_proxy";
     
-    limit_conn_zone $binary_remote_addr zone=limitconnbyaddr:20m rate=10r/s;
+    limit_conn_zone $binary_remote_addr zone=limitconnbyaddr:20m;
     limit_conn_status 429;
+
+    limit_req_zone $binary_remote_addr zone=req_zone:10m rate=10r/s;
 
     server {
         listen 80;
         server_name     _;
 
         limit_conn   limitconnbyaddr  50;
+        limit_req zone=req_zone;
 
         location / {
             return 404;
