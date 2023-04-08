@@ -17,4 +17,3 @@ services:
     - ./nginx/cache:/tmp/nginx/cache
     - ./conf/certbot/conf:/etc/letsencrypt
     - ./conf/certbot/www:/var/www/certbot
-    - ./build/cronjob:/etc/cron.d/cronjob
