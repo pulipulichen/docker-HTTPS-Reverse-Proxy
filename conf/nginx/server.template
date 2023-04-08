@@ -112,8 +112,8 @@
         #     root /var/www/certbot;
         # }
 
-        error_page 503 /503.html;
-        location /503.html {
+        error_page 503 /error.html;
+        location /error.html {
             root /opt/local/html;
         }
 

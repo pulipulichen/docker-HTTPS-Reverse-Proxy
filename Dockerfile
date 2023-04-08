@@ -72,8 +72,7 @@ COPY ./build/setup-certbot.sh /opt/rp/
 RUN chmod +x /opt/rp/*.sh
 
 RUN mkdir -p /opt/local/html
-RUN echo 'false' > /opt/local/html/404.html
-RUN echo 'false' > /opt/local/html/503.html
+RUN echo 'false' > /opt/local/html/error.html
 
 COPY ./build/setup.js /opt/rp/
 
