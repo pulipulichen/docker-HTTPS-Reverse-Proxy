@@ -11,7 +11,7 @@
   /etc/init.d/nginx reload
 
   echo "certbot update..."
-  /usr/bin/certbot
+  /usr/bin/certbot renew --dry-run
 
   cp -f /etc/nginx/nginx.conf.backup /etc/nginx/nginx.conf
   /etc/init.d/nginx reload
