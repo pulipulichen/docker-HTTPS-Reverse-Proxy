@@ -30,14 +30,11 @@ http {
         }
 
         error_page 404 /error.html;
-        location /error.html {
-            root /opt/local/html;
-        }
-
         error_page 503 /error.html;
         location /error.html {
             root /opt/local/html;
         }
+        
     }
 
 ${servers}
