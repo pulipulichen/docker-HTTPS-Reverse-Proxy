@@ -39,6 +39,8 @@ RUN npm -v
 RUN mkdir -p /etc/nginx/html/
 RUN echo "certbot" > /etc/nginx/html/index.html
 
+RUN apt-get install -y libnginx-mod-http-headers-more-filter
+
 # COPY ./build/setup-nginx-config.py /opt/rp/
 
 #COPY ./build/cron.py /opt/rp/
