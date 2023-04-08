@@ -57,7 +57,7 @@ for (let i = 0; i < rpBackendMap.length; i++) {
     // ===========
     // 檢查看看有沒有被佔用
     try {
-      execSync(`curl http://${server_name}`)
+      execSync(`curl --connect-timeout 5 http://${server_name}`)
       console.log(`${server_name} is running. Stop it before you want to running reverse proxy.`)
 
       // 有被佔用
@@ -120,7 +120,7 @@ if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
 
   // console.log(`nginx for certbot is starting...`)
   // execSync(`/opt/rp/nginx/nginx-start.sh`)
-  // execSync(`curl http://127.0.0.1`)
+  // execSync(`curl --connect-timeout 5 http://127.0.0.1`)
   
   // ================
 

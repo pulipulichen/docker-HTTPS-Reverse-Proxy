@@ -7,7 +7,7 @@ if [ -f "/opt/rp/certbot-init.sh" ]; then
   service nginx start
 
   echo "test ngnix..."
-  curl http://127.0.0.1
+  curl --connect-timeout 5 http://127.0.0.1
   
   cat /opt/rp/certbot-init.sh
   bash /opt/rp/certbot-init.sh
