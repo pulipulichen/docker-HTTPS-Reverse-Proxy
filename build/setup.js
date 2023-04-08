@@ -182,4 +182,7 @@ fs.writeFileSync(`/opt/rp/nginx/rp/nginx.conf`, confTemplate, `utf-8`)
 
 
 // throw new Error(`test`)
-// process.exit(64)
+execSync(`cat /opt/rp/nginx/rp/nginx.conf`)
+execSync(`cat /opt/rp/certbot-init.sh`)
+
+process.exit(64)
