@@ -26,9 +26,10 @@ else
     if [ -z "${NSLOOKUP}" ]; then
       echo "${RP_DOMAIN_NAME} is registered."
 
-      PING=`ping -c 1 $RP_DOMAIN_NAME | grep "1 received"`
-      echo $PING
-      if [ -z "${PING}" ]; then
+      # PING=`ping -c 1 $RP_DOMAIN_NAME | grep "1 received"`
+      CONNECT_HTTP=`curl http://$RP_DOMAIN_NAME | grep "Failed to connect to"`
+      echo $CONNECT_HTTP
+      if [ -z "${CONNECT_HTTP}" ]; then
         echo "Set CERTBOT as ${RP_DOMAIN_NAME}"
         CERTBOT_DOMAIN="$RP_DOMAIN_NAME"
       else
