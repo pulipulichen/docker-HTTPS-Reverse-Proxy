@@ -27,7 +27,7 @@ else
       echo "${RP_DOMAIN_NAME} is registered."
 
       PING=`ping -c 1 $RP_DOMAIN_NAME | grep "1 received"`
-      #echo $PING
+      echo $PING
       if [ -z "${PING}" ]; then
         echo "Set CERTBOT as ${RP_DOMAIN_NAME}"
         CERTBOT_DOMAIN="$RP_DOMAIN_NAME"
