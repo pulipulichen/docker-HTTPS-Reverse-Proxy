@@ -19,6 +19,8 @@ http {
         listen 80;
         server_name     _;
 
+        limit_conn   limitconnbyaddr  50;
+
         location / {
             return 404;
         }
