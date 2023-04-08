@@ -22,6 +22,7 @@ RUN mkdir -p /opt/rp/
 COPY ./build/nginx-certbot.conf /opt/rp/nginx-certbot.conf
 
 RUN apt-get install dnsutils -y
+RUN apt-get install jq w3m xclip -y
 
 # RUN mkdir -p /opt/rp
 COPY ./build/setup.sh /docker-entrypoint.d/
