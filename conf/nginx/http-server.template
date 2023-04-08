@@ -2,8 +2,12 @@
         listen 80;
 
         server_name ${server_name};
+        
+        client_body_timeout 5s;
+        client_header_timeout 5s;
 
         location / {
+            limit_conn addr 10;
             proxy_pass ${proxy_pass};
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
@@ -14,6 +18,7 @@
         }
 
         location ~ .*\.(html|css|js|png|jpeg|gif|mp3|mp4|mov|ogg)$ {
+            limit_conn addr 10;
             proxy_cache myzone;
             proxy_cache_valid  any 100m;
             proxy_pass ${proxy_pass};
