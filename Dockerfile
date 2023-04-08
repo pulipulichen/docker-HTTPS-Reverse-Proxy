@@ -37,13 +37,13 @@ RUN apt-get install jq w3m xclip -y
 
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash -
 RUN apt-get update && apt-get install -y yarn nodejs
-RUN npm -v
+# RUN npm -v
 
 RUN mkdir -p /etc/nginx/html/
 RUN echo "certbot" > /etc/nginx/html/index.html
 
 #RUN apt-get install -y libnginx-mod-http-headers-more-filter
-RUN apt-get install -y nginx-extras
+# RUN apt-get install -y nginx-extras
 # RUN apt-get install nginx-plus-module-headers-more
 
 # =================================================================
