@@ -5,11 +5,11 @@ if [ ! -f ./docker-compose.yml ]; then
 fi
 
 if [ ! -f ./conf/nginx/nginx-http.conf ]; then
-  cp ./conf/nginx/nginx-http.sample.conf ./config/nginx/nginx-http.conf
+  cp ./conf/nginx/nginx-http.sample.conf ./conf/nginx/nginx-http.conf
 fi
 
 if [ ! -f ./conf/nginx/nginx-https.conf ]; then
-  cp ./conf/nginx/nginx-https.sample.conf ./config/nginx/nginx-https.conf
+  cp ./conf/nginx/nginx-https.sample.conf ./conf/nginx/nginx-https.conf
 fi
 
 sudo docker-compose up --build
