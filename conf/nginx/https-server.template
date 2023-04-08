@@ -9,12 +9,18 @@
 
         location / {
             proxy_pass ${proxy_pass};
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
 
         location ~ .*\.(html|css|js|png|jpeg)$ {
            proxy_cache myzone;
            proxy_cache_valid  any 100m;
            proxy_pass ${proxy_pass};
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
 
         # location ~ /.well-known/acme-challenge/ {
