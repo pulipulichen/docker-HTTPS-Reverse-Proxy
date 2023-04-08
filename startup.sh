@@ -15,5 +15,5 @@ fi
 # fi
 
 
-
+sudo docker-compose stop
 sudo docker-compose up --build

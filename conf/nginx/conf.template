@@ -13,12 +13,14 @@ http {
         server_name     _;
 
         location / {
+            more_set_headers    "Server: reverse_proxy";
             return 404;
         }
 
         error_page 404 /404.html;
         location /404.html {
             root /opt/local/html;
+            more_set_headers    "Server: reverse_proxy";
         }
     }
 
