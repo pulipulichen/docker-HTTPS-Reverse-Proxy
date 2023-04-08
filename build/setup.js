@@ -130,10 +130,10 @@ if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
 
   let domains = rpBackendMap.filter(rp => rp.enable_https === true)
       .map(rp => {
-        return `-d ${rp.server_name}`
-      }).join(' ')
+        return rp.server_name
+      }).join(',')
 
-  let certbotCommand = `/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email ${tmpmail} ${domains} --agree-tos`
+  let certbotCommand = `/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email ${tmpmail} -d ${domains} --agree-tos`
   console.log(certbotCommand)
   fs.writeFileSync(`/opt/rp/certbot-init.sh`, `#!/bin/bash\n` + certbotCommand + '\n', 'utf-8')
   // execSync(certbotCommand)
