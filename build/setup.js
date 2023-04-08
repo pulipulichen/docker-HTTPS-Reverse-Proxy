@@ -124,7 +124,7 @@ if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
   // ================
 
   let tmpmail = execSync(`/tmpmail --generate`)
-  tmpmail = tmpmail.trim()
+  tmpmail = tmpmail.toString().trim()
   console.log(`tmpmail: ${tmpmail}`)
 
   // ================
