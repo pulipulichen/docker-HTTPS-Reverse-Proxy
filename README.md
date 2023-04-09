@@ -20,3 +20,7 @@ Nginx Reverse Proxy with HTTPS via LetsEncrypt and update certification regularl
 - ./conf/nginx/http-server.template
 - ./conf/nginx/https-server.template
 - ./conf/nginx/server.template
+
+## YAML Playground
+
+https://eemeli.org/yaml-playground/

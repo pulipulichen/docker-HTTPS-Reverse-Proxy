@@ -60,6 +60,23 @@ for (let i = 0; i < backends.length; i++) {
   }
 } 
 
+for (let i = 0; i < rpBackendMap.length; i++) {
+  let {proxy_pass} = rpBackendMap[i]
+
+  if (!Array.isArray(proxy_pass)) {
+    proxy_pass = [proxy_pass]
+  }
+
+  proxy_pass = proxy_pass.map(backend => {
+    if (backend.endsWith('/')) {
+      backend = backend.slice(0, -1)
+    }
+    return backend
+  })
+
+  rpBackendMap[i].proxy_pass = proxy_pass
+}
+
 // console.log(rpBackendMap)
 
 // ==============================
@@ -67,7 +84,7 @@ for (let i = 0; i < backends.length; i++) {
 const { execSync } = require("child_process")
 
 for (let i = 0; i < rpBackendMap.length; i++) {
-  let {server_name, proxy_pass} = rpBackendMap[i]
+  let {server_name} = rpBackendMap[i]
 
   if (server_name === '_') {
     rpBackendMap[i].enable_https = false
@@ -218,20 +235,33 @@ let serverTemplate = fs.readFileSync(`/opt/rp/nginx/rp/server.template`, 'utf-8'
 let confTemplate = fs.readFileSync(`/opt/rp/nginx/rp/conf.template`, 'utf-8')
 let httpServerTemplate = fs.readFileSync(`/opt/rp/nginx/rp/http-server.template`, 'utf-8')
 let httpsServerTemplate = fs.readFileSync(`/opt/rp/nginx/rp/https-server.template`, 'utf-8')
+// let upstreamTemplate = fs.readFileSync(`/opt/rp/nginx/rp/upstream.template`, 'utf-8')
 let servers = []
 
 for (let i = 0; i < rpBackendMap.length; i++) {
   let {server_name, proxy_pass, enable_https} = rpBackendMap[i]
+  let backend_host = 'backend' + i
 
   let server = serverTemplate.replace(/\$\{server_name\}/g, server_name)
-  server = server.replace(/\$\{proxy_pass\}/g, proxy_pass)
+  server = server.replace(/\$\{server_name\}/g, server_name)
+  server = server.replace(/\$\{backend_host\}/g, backend_host)
+  // server = server.replace(/\$\{proxy_pass\}/g, proxy_pass)
+
+  let backends = proxy_pass.map((backend) => {
+    return `        server ${backend};`
+  }).join('\n')
 
   let httpServer = httpServerTemplate.replace(/\$\{server\}/g, server)
+  httpServer = httpServer.replace(/\$\{backend_host\}/g, backend_host)
+  httpServer = httpServer.replace(/\$\{backends\}/g, backends)
+  httpServer = httpServer.replace(/\$\{server_name\}/g, server_name)
+  // httpServer = httpServer.replace(/\$\{proxy_pass\}/g, proxy_pass)
   servers.push(httpServer)
 
   if (enable_https) {
     let httpsServer = httpsServerTemplate.replace(/\$\{server\}/g, server)
     httpsServer = httpsServer.replace(/\$\{server_name\}/g, server_name)
+    // httpsServer = httpsServer.replace(/\$\{proxy_pass\}/g, proxy_pass)
     servers.push(httpsServer)
   }
 }

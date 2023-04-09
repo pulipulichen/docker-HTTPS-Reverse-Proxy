@@ -2,18 +2,29 @@
 
 cd "$(dirname "$0")"
 
-# if [ ! -f ./docker-compose.yml ]; then
-#   cp ./docker-compose.sample.yml ./docker-compose.yml
-# fi
+if [ ! -f ./conf/backends.yml ]; then
+  cp ./conf/backends.sample.yml ./conf/backends.yml
+fi
 
-# if [ ! -f ./conf/nginx/nginx-http.conf ]; then
-#   cp ./conf/nginx/nginx-http.sample.conf ./conf/nginx/nginx-http.conf
-# fi
+if [ ! -f ./conf/nginx/conf.template ]; then
+  cp ./conf/nginx/conf.sample.template ./conf/nginx/conf.template
+fi
 
-# if [ ! -f ./conf/nginx/nginx-https.conf ]; then
-#   cp ./conf/nginx/nginx-https.sample.conf ./conf/nginx/nginx-https.conf
-# fi
+if [ ! -f ./conf/nginx/http-server.template ]; then
+  cp ./conf/nginx/http-server.sample.template ./conf/nginx/http-server.template
+fi
 
+if [ ! -f ./conf/nginx/https-server.template ]; then
+  cp ./conf/nginx/https-server.sample.template ./conf/nginx/https-server.template
+fi
+
+if [ ! -f ./conf/nginx/server.template ]; then
+  cp ./conf/nginx/server.sample.template ./conf/nginx/server.template
+fi
+
+if [ ! -f ./conf/nginx/upstream.template ]; then
+  cp ./conf/nginx/upstream.sample.template ./conf/nginx/upstream.template
+fi
 
 sudo docker-compose stop
 sudo docker-compose up --build

@@ -1,0 +1,10 @@
+    upstream ${backend_host} {
+        least_conn;
+${backends}
+    }
+
+    server {
+        listen 80;
+
+${server}
+    }

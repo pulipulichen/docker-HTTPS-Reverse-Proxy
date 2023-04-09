@@ -1,0 +1,120 @@
+        server_name ${server_name};
+
+        client_body_timeout 5s;
+        client_header_timeout 5s;
+        limit_conn limitconnbyaddr 10;
+        limit_req zone=req_zone burst=10 nodelay;
+      
+        gzip on;
+        gzip_disable "msie6";
+
+        gzip_vary on;
+        gzip_proxied any;
+        gzip_comp_level 6;
+        gzip_buffers 16 8k;
+        gzip_http_version 1.1;
+        gzip_min_length 256;
+
+        # https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+        gzip_types
+          application/atom+xml
+          application/geo+json
+          application/javascript
+          application/x-javascript
+          application/json
+          application/ld+json
+          application/manifest+json
+          application/rdf+xml
+          application/rss+xml
+          application/xhtml+xml
+          application/xml
+          font/eot
+          font/otf
+          font/ttf
+          image/svg+xml
+          image/svg+xml/javascript
+          image/bmp
+          image/jpeg
+          image/x-png
+          image/tiff
+          image/png
+          image/gif
+          audio/mid
+        	audio/mpeg
+        	audio/mp4
+          application/vnd.oasis.opendocument.text
+          application/pdf
+        	audio/ogg
+        	audio/vnd.wav
+        	video/x-flv
+        	video/mp4
+        	video/mpeg
+        	application/epub+zip
+          image/vnd.microsoft.icon
+        	text/calendar
+          video/3gpp
+          video/quicktime
+          application/x-httpd-php
+          application/x-tar
+          video/x-msvideo
+          application/x-sh
+          application/rtf
+        	video/x-ms-wmv
+          application/vnd.ms-powerpoint
+          text/css
+          text/javascript
+          text/plain
+          text/xml
+          application/ttf
+          application/x-font-ttf
+          font/opentype
+          application/vnd.ms-fontobject
+          font/x-woff
+          application/vnd.ms-excel
+          video/mp2t
+          text/csv
+        	audio/aac
+          application/vnd.amazon.ebook
+        	application/octet-stream
+          application/vnd.visio
+          video/webm
+          audio/webm
+        	application/msword
+          audio/wav
+          image/webp
+          font/woff2
+          application/x-ttf;
+
+        location / {
+            proxy_pass http://${backend_host};
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_hide_header X-Powered-By;
+            proxy_hide_header Server;
+            #more_set_headers    "Server: reverse_proxy";
+        }
+
+        location ~ .*\.(html|css|xml|rss|atom|svg|eot|otf|ttf|woff|js|png|jpeg|gif|mp3|mp4|mov|ogg)$ {
+            #gzip on;
+            proxy_cache myzone;
+            proxy_cache_valid  any 100m;
+            proxy_pass http://${backend_host};
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_hide_header X-Powered-By;
+            proxy_hide_header Server;
+            #more_set_headers    "Server: reverse_proxy";
+        }
+
+        # location ~ /.well-known/acme-challenge/ {
+        #     root /var/www/certbot;
+        # }
+
+        error_page 503 /error.html;
+        location /error.html {
+            root /opt/local/html;
+        }
+
+        add_header X-Cache-Status $upstream_cache_status;

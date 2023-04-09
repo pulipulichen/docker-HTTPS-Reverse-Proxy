@@ -1,2 +1,4 @@
-nginx-http.conf
-nginx-https.conf
+conf.template
+http-server.template
+https-server.template
+server.template

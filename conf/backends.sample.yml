@@ -1,3 +1,5 @@
 backends:
-  - test-a.pulipuli.info: http://example.com
-  - test-b.pulipuli.info: http://www.helloworld.org
+  - test-a111.pulipuli.info: example.com
+  - test-b222.pulipuli.info: 
+    - www.helloworld.org
+    - example.com
