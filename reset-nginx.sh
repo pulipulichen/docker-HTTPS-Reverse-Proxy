@@ -15,3 +15,5 @@ fi
 if [ -f ./conf/nginx/server.template ]; then
   rm -f  ./conf/nginx/server.template
 fi
+
+./git-reset.sh
