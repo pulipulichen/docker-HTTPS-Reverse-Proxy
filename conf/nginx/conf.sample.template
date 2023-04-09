@@ -20,15 +20,7 @@ http {
 
     server {
         listen 80;
-        server_name     _;
-
-        location / {
-            return 404;
-        }
-    }
-
-    server {
-        listen 443;
+        listen 443 default_server ssl;
         server_name     _;
 
         location / {
