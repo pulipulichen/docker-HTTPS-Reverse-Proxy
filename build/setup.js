@@ -1,38 +1,63 @@
-let RP_BACKEND = process.env.RP_BACKEND
+const YAML = require('yaml')
+const fs = require('fs')
 
-if (!RP_BACKEND) {
-  throw new Error(`Please setup "RP_BACKEND" in "docker-compose.yml"`)
+// let RP_BACKEND = process.env.RP_BACKEND
+
+
+if (!fs.existsSync('/opt/rp/backends.yml')) {
+  throw new Error(`Please setup "./conf/backends" first`)
 }
 
-let rpBackendMap = []
-if (RP_BACKEND.indexOf('|') === -1) {
-  rpBackendMap.push({
-    server_name: '_',
-    proxy_pass: RP_BACKEND
-  })
-}
-else {
-  RP_BACKEND.split('|').forEach((backendPair) => {
-    let pos = backendPair.indexOf(',')
-    if (pos === -1) {
-      throw new Error(`Multiple RP_BACKEND should include "|" and ","`)
-    }
+const file = fs.readFileSync('/opt/rp/backends.yml', 'utf8')
+let yamlObject = YAML.parse(file)
+
+let backends = yamlObject.backends
+
+// if (RP_BACKEND.indexOf('|') === -1) {
+//   rpBackendMap.push({
+//     server_name: '_',
+//     proxy_pass: RP_BACKEND
+//   })
+// }
+// else {
+//   RP_BACKEND.split('|').forEach((backendPair) => {
+//     let pos = backendPair.indexOf(',')
+//     if (pos === -1) {
+//       throw new Error(`Multiple RP_BACKEND should include "|" and ","`)
+//     }
 
     
-    let server_name = backendPair.slice(0, pos)
-    let proxy_pass = backendPair.slice(pos + 1)
+//     let server_name = backendPair.slice(0, pos)
+//     let proxy_pass = backendPair.slice(pos + 1)
 
-    if (proxy_pass.endsWith('/')) {
-      proxy_pass = proxy_pass.slice(0, -1)
-    }
+//     if (proxy_pass.endsWith('/')) {
+//       proxy_pass = proxy_pass.slice(0, -1)
+//     }
 
+//     rpBackendMap.push({
+//       server_name,
+//       proxy_pass
+//     })
+//   })
+// }
+
+for (let i = 0; i < backends.length; i++) {
+  if (typeof(backends[i]) === 'string') {
     rpBackendMap.push({
-      server_name,
-      proxy_pass
+      server_name: '_',
+      proxy_pass: backends[i]
     })
-  })
-}
-
+  }
+  else {
+    Object.keys(backends[i]).forEach((server_name) => {
+      let proxy_pass = backends[i][server_name]
+      rpBackendMap.push({
+        server_name,
+        proxy_pass
+      })
+    })
+  }
+} 
 
 // console.log(rpBackendMap)
 
@@ -101,7 +126,7 @@ for (let i = 0; i < rpBackendMap.length; i++) {
 
 // let httpServerTemplates = []
 // let httpServerTemplate
-const fs = require('fs')
+// const fs = require('fs')
 
 // for (let i = 0; i < rpBackendMap.length; i++) {
 //   if (rpBackendMap[i].enable_https === false) {

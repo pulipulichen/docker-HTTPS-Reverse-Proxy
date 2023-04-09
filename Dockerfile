@@ -46,6 +46,11 @@ RUN echo "certbot" > /etc/nginx/html/index.html
 RUN apt-get install -y nginx-extras
 # RUN apt-get install nginx-plus-module-headers-more
 
+# https://www.npmjs.com/package/yaml
+WORKDIR /opt/rp/
+RUN npm install yaml
+WORKDIR /
+
 # =================================================================
 # 安裝PageSpeed模組
 # RUN apt install curl dpkg-dev build-essential zlib1g-dev git libpcre3 git libpcre3-dev unzip uuid-dev -y
@@ -75,6 +80,7 @@ RUN mkdir -p /opt/local/html
 RUN echo 'false' > /opt/local/html/error.html
 
 COPY ./build/setup.js /opt/rp/
+
 
 # RUN mkdir -p /opt/rp
 COPY ./build/setup.sh /docker-entrypoint.d/
