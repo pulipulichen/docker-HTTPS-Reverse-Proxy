@@ -10,9 +10,9 @@ Nginx Reverse Proxy with HTTPS via LetsEncrypt and update certification regularl
 
 ## How to Use
 
-1. `git clone`
-2. Set up configuration in `docker-compose.yml` and files in `./conf/ngnix`.
-3. `startup.sh` .
+1. `git clone https://github.com/pulipulichen/docker-HTTPS-Reverse-Proxy.git`
+2. Set up configuration in `/conf/backends.yml`.
+3. `./startup.sh` .
 
 ## Configuration
 
