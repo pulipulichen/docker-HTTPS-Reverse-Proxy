@@ -5,7 +5,7 @@ const fs = require('fs')
 
 
 if (!fs.existsSync('/opt/rp/backends.yml')) {
-  throw new Error(`Please setup "./conf/backends" first`)
+  throw new Error(`Please setup "./conf/backends.yml" first`)
 }
 
 const file = fs.readFileSync('/opt/rp/backends.yml', 'utf8')
