@@ -231,6 +231,7 @@ for (let i = 0; i < rpBackendMap.length; i++) {
 
   if (enable_https) {
     let httpsServer = httpsServerTemplate.replace(/\$\{server\}/g, server)
+    httpsServer = httpsServer.replace(/\$\{server_name\}/g, server_name)
     servers.push(httpsServer)
   }
 }
