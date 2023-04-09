@@ -9,8 +9,8 @@ services:
     - 443:443
     # - 8080:80
     # - 8443:443
-    #network_mode: host
-    restart: unless-stopped
+    network_mode: host
+    # restart: unless-stopped
     build: .
     volumes:
     - ./conf/backends.yml:/opt/rp/backends.yml
