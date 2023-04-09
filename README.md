@@ -7,6 +7,8 @@ Nginx Reverse Proxy with HTTPS via LetsEncrypt and update certification regularl
 - Loading balanced: You can server multiple backends with a domain name.
 - Proxy cache and gzip compression: JavaScript, CSS, images, audio and video files will be cached and compressed automatically.
 - Request limitation by IP address and short time brust: Prevent DDoS.
+- SSL certicate request and renew automatically.
+- Virtual host: support Apache VirtualHost backends.
 
 ## How to Use
 
