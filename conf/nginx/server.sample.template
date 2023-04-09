@@ -9,19 +9,9 @@
         }
 
         location ~ .*\.(html|css|xml|rss|atom|svg|eot|otf|ttf|woff|js|png|jpeg|gif|mp3|mp4|mov|ogg)$ {
-            #gzip on;
             proxy_cache myzone;
             proxy_cache_valid  any 100m;
             proxy_pass http://${backend_host};
-        }
-
-        # location ~ /.well-known/acme-challenge/ {
-        #     root /var/www/certbot;
-        # }
-
-        error_page 503 /error.html;
-        location /error.html {
-            root /opt/local/html;
         }
 
         add_header X-Cache-Status $upstream_cache_status;

@@ -22,22 +22,23 @@ http {
         listen 80;
         server_name     _;
 
-        limit_conn   limitconnbyaddr  50;
-        limit_req zone=req_zone;
+        location / {
+            return 404;
+        }
+    }
+
+    server {
+        listen 443;
+        server_name     _;
 
         location / {
             return 404;
         }
-
-        error_page 404 /error.html;
-        error_page 503 /error.html;
-        location /error.html {
-            root /opt/local/html;
-        }
-        
     }
 
 ${servers}
+
+    error_page 403 404 500 502 503 504 /opt/local/html/error.html;
 
     proxy_cache_path /tmp/nginx/cache/proxy levels=1:2 keys_zone=myzone:10m inactive=1d max_size=10g;
     proxy_cache_key '$scheme$host$request_uri$is_args$args';
