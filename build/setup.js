@@ -41,6 +41,7 @@ let backends = yamlObject.backends
 //   })
 // }
 
+let rpBackendMap = []
 for (let i = 0; i < backends.length; i++) {
   if (typeof(backends[i]) === 'string') {
     rpBackendMap.push({
