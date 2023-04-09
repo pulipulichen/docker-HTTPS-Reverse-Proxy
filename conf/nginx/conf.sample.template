@@ -11,7 +11,7 @@ http {
     charset utf-8;
     server_names_hash_bucket_size  128;
     
-    more_clear_headers X-Powered-By Server;
+    more_set_headers "Server: reverse_proxy";
     
     limit_conn_zone $binary_remote_addr zone=limitconnbyaddr:20m;
     limit_conn_status 429;
