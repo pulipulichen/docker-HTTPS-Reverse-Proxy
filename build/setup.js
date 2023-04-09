@@ -71,6 +71,10 @@ for (let i = 0; i < rpBackendMap.length; i++) {
     if (backend.endsWith('/')) {
       backend = backend.slice(0, -1)
     }
+
+    if (backend.startsWith('http://') || backend.startsWith('https://')) {
+      backend = backend.slice(backend.indexOf('://') + 3)
+    }
     return backend
   })
 
