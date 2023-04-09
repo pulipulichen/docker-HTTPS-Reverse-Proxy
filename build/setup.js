@@ -97,7 +97,11 @@ for (let i = 0; i < rpBackendMap.length; i++) {
 
   // 先看看有沒有註冊
   try {
-    execSync(`nslookup ${server_name}`)
+    let nslookupResult = execSync(`nslookup ${server_name}`)
+    nslookupResult = nslookupResult.toString()
+    if (nslookupResult.indexOf('Address: 127.0.0.1') > -1) {
+      throw new Error(`${server_name} is localhost.`)
+    }
 
     // 有註冊
     let pingResult = execSync(`ping -c 1 -t 10 ${server_name}`)
