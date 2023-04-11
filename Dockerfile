@@ -52,6 +52,11 @@ RUN npm install yaml
 WORKDIR /
 
 # =================================================================
+# 重新安裝nginx並且編譯
+# https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-debian-10
+
+
+# =================================================================
 # 安裝PageSpeed模組
 # RUN apt install curl dpkg-dev build-essential zlib1g-dev git libpcre3 git libpcre3-dev unzip uuid-dev -y
 # RUN apt-get install -y wget nano
