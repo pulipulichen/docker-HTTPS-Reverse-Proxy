@@ -8,7 +8,7 @@
             proxy_pass http://${backend_host};
         }
 
-        location ~ .*\.(html|css|xml|rss|atom|svg|eot|otf|ttf|woff|js|png|jpeg|gif|mp3|mp4|mov|ogg)$ {
+        location ~ .*\.(html|css|xml|rss|atom|svg|eot|otf|ttf|woff|js|jpeg|gif|mp3|mp4|mov|ogg)$ {
             proxy_cache myzone;
             proxy_cache_valid any 100m;
             proxy_pass http://${backend_host};
