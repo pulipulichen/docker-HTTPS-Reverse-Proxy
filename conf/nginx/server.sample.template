@@ -6,6 +6,7 @@
 
         location / {
             proxy_pass http://${backend_host};
+            proxy_protocol on;
 
 
     proxy_set_header Host $host;
@@ -29,6 +30,7 @@
             proxy_cache myzone;
             proxy_cache_valid any 100m;
             proxy_pass http://${backend_host};
+            proxy_protocol on;
 
 
     # include /config/nginx/cf_real-ip.conf;
