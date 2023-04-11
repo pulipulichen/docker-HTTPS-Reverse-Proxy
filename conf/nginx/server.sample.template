@@ -3,10 +3,10 @@
         limit_conn limitconnbyaddr 50;
         limit_req zone=req_zone burst=10;
       
+            proxy_protocol on;
 
         location / {
             proxy_pass http://${backend_host};
-            proxy_protocol on;
 
 
     proxy_set_header Host $host;
@@ -30,7 +30,6 @@
             proxy_cache myzone;
             proxy_cache_valid any 100m;
             proxy_pass http://${backend_host};
-            proxy_protocol on;
 
 
     # include /config/nginx/cf_real-ip.conf;
