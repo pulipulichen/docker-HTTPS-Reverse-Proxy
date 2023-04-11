@@ -14,4 +14,9 @@
             proxy_pass http://${backend_host};
         }
 
+        location = /error.html {
+            root /opt/local/html;
+            internal;
+        }
+
         add_header X-Cache-Status $upstream_cache_status;

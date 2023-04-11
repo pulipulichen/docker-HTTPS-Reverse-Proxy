@@ -30,10 +30,7 @@ http {
 ${servers}
 
     error_page 403 404 500 502 503 504 /error.html;
-    location = /error.html {
-        root /opt/local/html;
-        internal;
-    }
+    
 
     proxy_cache_path /tmp/nginx/cache/proxy levels=1:2 keys_zone=myzone:10m inactive=1d max_size=10g;
     proxy_cache_key '$scheme$host$request_uri$is_args$args';
