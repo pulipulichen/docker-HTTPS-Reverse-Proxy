@@ -22,5 +22,6 @@ if [ ! -f ./conf/nginx/server.template ]; then
   cp ./conf/nginx/server.sample.template ./conf/nginx/server.template
 fi
 
+sudo docker-compose build
 sudo docker-compose stop
 sudo docker-compose up --build

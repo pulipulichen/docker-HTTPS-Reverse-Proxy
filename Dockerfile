@@ -1,5 +1,5 @@
 # https://hub.docker.com/layers/library/nginx/1.23.4-bullseye-perl/images/sha256-85d0eaac3c90ccb73feb2aceb636f22080e9dfcdd2c8e04b91716bd4241ec6e0?context=explore
-FROM nginx:1.23.4-bullseye-perl
+FROM nginx:1.19.8-perl
 #FROM anroe/nginx-headers-more:1.22.1-headers-more-v0.34
 # FROM yudikeren/nginx-cdn:1.1
 
