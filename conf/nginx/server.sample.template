@@ -1,7 +1,7 @@
         server_name ${server_name};
 
-        limit_conn limitconnbyaddr 10;
-        limit_req zone=req_zone burst=10 nodelay;
+        limit_conn limitconnbyaddr 50;
+        limit_req zone=req_zone burst=50 nodelay;
       
 
         location / {
