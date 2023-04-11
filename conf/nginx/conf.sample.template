@@ -17,7 +17,7 @@ http {
     limit_conn_zone $binary_remote_addr zone=limitconnbyaddr:20m;
     limit_conn_status 429;
 
-    limit_req_zone $binary_remote_addr zone=req_zone:10m rate=100r/s;
+    limit_req_zone $binary_remote_addr zone=req_zone:10m rate=10r/s;
 
     # include /config/nginx/cf_real-ip.conf;
     set_real_ip_from 0.0.0.0/0;
