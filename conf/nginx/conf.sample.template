@@ -62,7 +62,6 @@ ${servers}
     # https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
     gzip_types *;
 
-}
 
 map $remote_addr $proxy_forwarded_elem {
     # IPv4 addresses can be sent as-is
@@ -81,4 +80,6 @@ map $http_forwarded $proxy_add_forwarded {
 
     # Otherwise, replace it
     default "$proxy_forwarded_elem";
+}
+
 }
