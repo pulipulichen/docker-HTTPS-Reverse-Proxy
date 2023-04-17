@@ -4,7 +4,7 @@ services:
     #environment:
     #- RP_BACKEND=test-a.pulipuli.info,http://example.com|test-b.pulipuli.info,http://www.helloworld.org
     #- RP_DOMAIN_NAME=rp.pulipuli.info
-    ports:
+    #ports: 
     # - 80:80
     # - 443:443
     # - 8080:80
@@ -21,4 +21,4 @@ services:
     - ./cache/proxy:/tmp/nginx/cache/proxy
     - ./cache/pagespeed:/tmp/nginx/cache/pagespeed
     - ./conf/certbot/conf:/etc/letsencrypt
-    - ./conf/certbot/www:/var/www/certbot 
+    - ./conf/certbot/www:/var/www/certbot
