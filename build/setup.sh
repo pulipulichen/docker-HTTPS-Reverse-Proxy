@@ -1,5 +1,7 @@
 #!/bin/bash
 
+nginx -V
+
 node /opt/rp/setup.js
 if [ $? != 0 ]; then
    exit 1
