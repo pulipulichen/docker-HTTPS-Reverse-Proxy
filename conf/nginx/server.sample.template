@@ -27,7 +27,7 @@
     #real_ip_header CF-Connecting-IP;
     #proxy_set_header  X-Forwarded-Proto $scheme;
     #real_ip_header Forwarded;
-    #real_ip_recursive on;
+    real_ip_recursive on;
     real_ip_header X-Real-IP;
     # ok
         location / {
