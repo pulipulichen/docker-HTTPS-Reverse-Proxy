@@ -6,7 +6,7 @@
         #proxy_protocol on;
 
         location / {
-            proxy_pass http://${backend_host};
+            proxy_pass http://192.168.122.77;
 
     #proxy_bind $remote_addr transparent;
     proxy_set_header Host $host;
