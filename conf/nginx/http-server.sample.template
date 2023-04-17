@@ -4,7 +4,7 @@ ${backends}
     }
 
     server {
-        listen 80 http;
+        listen 80;
 
 ${server}
     }
