@@ -4,11 +4,8 @@
         limit_req zone=req_zone burst=10;
       
         #proxy_protocol on;
-
-        location / {
-            proxy_pass http://192.168.122.77;
-
-    #proxy_bind $remote_addr transparent;
+        
+ #proxy_bind $remote_addr transparent;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-Proto $scheme;
@@ -28,6 +25,10 @@
     real_ip_header X-Forwarded-For;
     #real_ip_recursive on;
     # ok
+        location / {
+            proxy_pass http://192.168.122.77;
+
+   
         }
 
         location ~ .*\.(html|css|xml|rss|atom|svg|eot|otf|ttf|woff|js|jpeg|gif|mp3|mp4|mov|ogg)$ {
