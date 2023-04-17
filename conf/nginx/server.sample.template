@@ -26,7 +26,8 @@
     #real_ip_header CF-Connecting-IP;
     #proxy_set_header  X-Forwarded-Proto $scheme;
     real_ip_header X-Forwarded-For;
-    real_ip_recursive on;
+    #real_ip_recursive on;
+    # ok
         }
 
         location ~ .*\.(html|css|xml|rss|atom|svg|eot|otf|ttf|woff|js|jpeg|gif|mp3|mp4|mov|ogg)$ {
