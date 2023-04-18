@@ -2,7 +2,8 @@
 #FROM nginx:1.23.4-bullseye-perl
 #FROM anroe/nginx-headers-more:1.22.1-headers-more-v0.34
 # FROM yudikeren/nginx-cdn:1.1
-FROM nginxproxy/nginx-proxy:1.2.3
+#FROM nginxproxy/nginx-proxy:1.2.3 
+FROM nginx:1.17.6-perl
 
 RUN apt-get update
 RUN apt-get install -y certbot iputils-ping cron
