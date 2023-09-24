@@ -212,6 +212,9 @@ if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
     certbotCommands.push(`/usr/bin/certbot certonly --webroot -w /var/www/certbot --email ${tmpmail} -d ${server_name} --agree-tos`)
   }
 
+  certbotCommands.push(`/opt/rp/cron-certbot.sh &`)
+  
+
   // let certbotCommand = rpBackendMap.filter(rp => rp.enable_https === true)
   //     .map(rp => {
   //       // return rp.server_name
@@ -259,6 +262,10 @@ for (let i = 0; i < rpBackendMap.length; i++) {
   // server = server.replace(/\$\{proxy_pass\}/g, proxy_pass)
 
   let backends = proxy_pass.map((backend) => {
+    if (backend.startsWith('127.0.0.1:')) {
+      let port = backend.slice(backend.indexOf(':'))
+      backend = server_name + port
+    }
     return `        server ${backend};`
   }).join('\n')
 
