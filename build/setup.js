@@ -145,7 +145,8 @@ for (let i = 0; i < rpBackendMap.length; i++) {
 }
 
 console.log(rpBackendMap)
-throw new Error('Stop for debug')
+return false
+// throw new Error('Stop for debug')
 
 // ==============================
 
