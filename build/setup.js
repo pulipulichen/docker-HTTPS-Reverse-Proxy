@@ -205,7 +205,7 @@ if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
 
     if (fs.existsSync(`/etc/letsencrypt/live/${server_name}/fullchain.pem`)) {
       console.log(`/etc/letsencrypt/live/${server_name}/fullchain.pem is existed. skip.`)
-      continue
+      // continue
     }
 
     certbotCommands.push(`/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email ${tmpmail} -d ${server_name} --agree-tos`)
