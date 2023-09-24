@@ -20,3 +20,4 @@ services:
     - ./conf/certbot/conf:/etc/letsencrypt
     - ./conf/certbot/www:/var/www/certbot
     - ./build/setup.js:/opt/rp/setup.js
+    - ./runtime/:/opt/rp/nginx/rp/
