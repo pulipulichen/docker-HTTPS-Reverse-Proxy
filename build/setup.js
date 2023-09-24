@@ -209,7 +209,7 @@ if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
     }
 
     // certbotCommands.push(`/usr/bin/certbot certonly --webroot -w /var/www/certbot --force-renewal --email ${tmpmail} -d ${server_name} --agree-tos`)
-    certbotCommands.push(`/usr/bin/certbot certonly --webroot -w /var/www/certbot --renewal --email ${tmpmail} -d ${server_name} --agree-tos`)
+    certbotCommands.push(`/usr/bin/certbot certonly --webroot -w /var/www/certbot --email ${tmpmail} -d ${server_name} --agree-tos`)
   }
 
   // let certbotCommand = rpBackendMap.filter(rp => rp.enable_https === true)
