@@ -144,8 +144,8 @@ for (let i = 0; i < rpBackendMap.length; i++) {
   // console.log(nslookupResult.toString())
 }
 
-console.log(rpBackendMap)
-return false
+// console.log(rpBackendMap)
+// return false
 // throw new Error('Stop for debug')
 
 // ==============================
@@ -224,7 +224,7 @@ if (rpBackendMap.filter(rp => rp.enable_https === true).length > 0) {
     fs.writeFileSync(`/opt/rp/certbot-init.sh`, `#!/bin/bash\n` + certbotCommands.join('\n') + '\n', 'utf-8')
   }
   // execSync(certbotCommand)
-
+  return false
   // // ================
 
   // console.log(`nginx for certbot is stoping...`)
