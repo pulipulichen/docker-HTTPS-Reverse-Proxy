@@ -144,7 +144,8 @@ for (let i = 0; i < rpBackendMap.length; i++) {
   // console.log(nslookupResult.toString())
 }
 
-// console.log(rpBackendMap)
+console.log(rpBackendMap)
+throw new Error('Stop for debug')
 
 // ==============================
 
