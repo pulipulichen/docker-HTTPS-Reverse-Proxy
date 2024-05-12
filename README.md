@@ -1,5 +1,16 @@
 # docker-HTTPS-Reverse-Proxy
-Nginx Reverse Proxy with HTTPS via LetsEncrypt and update certification regularly.
+
+This is a Docker server configured with an Nginx reverse proxy server, which includes built-in functionality to automatically apply for certificates from Let's Encrypt, allowing it to add HTTPS protocol to backend servers.
+
+這是一個以Nginx反向代理伺服器構成的Docker伺服器，並且內建了自動跟Let's Encrypt申請憑證的功能，能夠為後端伺服器加上HTTPS協定。
+
+## Technologies
+
+- Docker 虛擬化技術
+- Nginx 網頁伺服器兼反向代理伺服器
+- certbot 憑證申請工具
+
+![](https://blogger.googleusercontent.com/img/a/AVvXsEiS2eJu_QGYTs-IdaUKFqKjcrgIgIXtoD1w9J5VUuP8VWUhd6sqHao_d3F5fmCwhdLMjDwbfxIZtI9S5awlV_fox8IKjKOfxzoVup8_GbFS6aGP3xCaVFFVMkYPlvjBz3IcMFXoIAZ5yx1L2e41TFgtK4GTOlDJpek99roQ0obsfCDGv5MuKis-lg)
 
 ## Features
 
@@ -28,3 +39,6 @@ Nginx Reverse Proxy with HTTPS via LetsEncrypt and update certification regularl
 ## YAML Playground
 
 https://eemeli.org/yaml-playground/
+
+## Citation
+
