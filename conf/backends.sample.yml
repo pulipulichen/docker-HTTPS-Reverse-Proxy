@@ -1,5 +1,9 @@
 backends:
-  - test-a111.pulipuli.info: example.com
+  # The key, "test-a111.pulipuli.info", serves as the public domain name which is pointed to the reverse proxy.
+  # The value, "192.168.0.10", represents the backend server for the domain name.
+  - test-a111.pulipuli.info: 192.168.0.10
+
+  # Multiple backend servers are allowed. You can use the array under the domain name to list the IP addresses of the backend servers.
   - test-b222.pulipuli.info: 
-    - www.helloworld.org
-    - example.com
+    - 192.168.0.10
+    - 192.168.0.12
