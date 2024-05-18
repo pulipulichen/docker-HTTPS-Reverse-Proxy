@@ -6,9 +6,9 @@ This is a Docker server configured with an Nginx reverse proxy server, which inc
 
 ## Technologies
 
-- Docker 虛擬化技術
-- Nginx 網頁伺服器兼反向代理伺服器
-- certbot 憑證申請工具
+- **Docker** 虛擬化技術
+- **Nginx** 網頁伺服器兼反向代理伺服器
+- **certbot** 憑證申請工具
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEiS2eJu_QGYTs-IdaUKFqKjcrgIgIXtoD1w9J5VUuP8VWUhd6sqHao_d3F5fmCwhdLMjDwbfxIZtI9S5awlV_fox8IKjKOfxzoVup8_GbFS6aGP3xCaVFFVMkYPlvjBz3IcMFXoIAZ5yx1L2e41TFgtK4GTOlDJpek99roQ0obsfCDGv5MuKis-lg)
 

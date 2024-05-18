@@ -1,6 +1,37 @@
 {
+  "name": "docker-HTTPS-Reverse-Proxy",
+  "version": "1.0.0",
+  "description": "Based on the Zentyal router operating system, the web management interface has been modified to focus on DNS, DHCP, NAT, Reverse Proxy, and knowledge management functions.",
+  "main": "index.js",
   "scripts": {
     "start": "docker-compose up --build",
-    "bash": "docker-compose run rp bash"
+    "bash": "docker-compose run rp bash",
+    "tag": "./build/tag.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://pulipuli.chen@gmail.com@github.com/pulipulichen/docker-HTTPS-Reverse-Proxy.git"
+  },
+  "keywords": [
+    "docker-HTTPS-Reverse-Proxy",
+    "Nginx",
+    "Reverse Proxy",
+    "Certbot",
+    "Docker"
+  ],
+  "author": {
+    "name": "Yung-Ting Chen",
+    "email": "blog@pulipuli.info",
+    "orcid": "https://orcid.org/0000-0003-3751-610X",
+    "url": "https://blog.pulipuli.info"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pulipulichen/docker-HTTPS-Reverse-Proxy/issues"
+  },
+  "homepage": "https://github.com/pulipulichen/docker-HTTPS-Reverse-Proxy#readme",
+  "devDependencies": {
+  },
+  "dependencies": {
   }
 }
