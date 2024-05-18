@@ -44,4 +44,4 @@ https://eemeli.org/yaml-playground/
 
 ## Citation
 
-Chen, Y.-T. (2024). _Docker-HTTPS-Reverse-Proxy_ (0.9.0) \[JavaScript\]. [https://github.com/pulipulichen/docker-HTTPS-Reverse-Proxy](https://github.com/pulipulichen/docker-HTTPS-Reverse-Proxy) (Original work published 2023)
+Chen, Y.-T. (2024). *Docker-HTTPS-Reverse-Proxy* (20240518.202242) [Computer software]. Zenodo. [https://doi.org/10.5281/ZENODO.11214011](https://doi.org/10.5281/ZENODO.11214011)
