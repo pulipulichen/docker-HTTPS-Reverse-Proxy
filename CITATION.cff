@@ -9,3 +9,6 @@ title: "docker-HTTPS-Reverse-Proxy"
 license: "MIT"
 repository-code: "https://github.com/pulipulichen/docker-HTTPS-Reverse-Proxy"
 abstract: "Based on the Zentyal router operating system, the web management interface has been modified to focus on DNS, DHCP, NAT, Reverse Proxy, and knowledge management functions."
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.11214011

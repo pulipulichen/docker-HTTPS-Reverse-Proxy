@@ -30,6 +30,7 @@
     "url": "https://github.com/pulipulichen/docker-HTTPS-Reverse-Proxy/issues"
   },
   "homepage": "https://github.com/pulipulichen/docker-HTTPS-Reverse-Proxy#readme",
+  "doi": "10.5281/zenodo.11214011",
   "devDependencies": {
   },
   "dependencies": {
