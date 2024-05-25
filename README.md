@@ -6,7 +6,7 @@ This is a Docker server configured with an Nginx reverse proxy server, which inc
 
 這是一個以Nginx反向代理伺服器構成的Docker伺服器，並且內建了自動跟Let's Encrypt申請憑證的功能，能夠為後端伺服器加上HTTPS協定。
 
-## Technique
+## Techniques
 
 - **Docker** 虛擬化技術
 - **Nginx** 網頁伺服器兼反向代理伺服器
