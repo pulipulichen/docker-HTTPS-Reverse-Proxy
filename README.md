@@ -1,6 +1,6 @@
 [![DOI](https://zenodo.org/badge/624196765.svg)](https://zenodo.org/doi/10.5281/zenodo.11214011)
 
-# docker-HTTPS-Reverse-Proxy
+# docker-HTTPS-Reverse-Proxy: 以Nginx反向代理伺服器構成的Docker伺服器
 
 This is a Docker server configured with an Nginx reverse proxy server, which includes built-in functionality to automatically apply for certificates from Let's Encrypt, allowing it to add HTTPS protocol to backend servers.
 
